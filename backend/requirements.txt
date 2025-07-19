@@ -1,0 +1,9 @@
+langchain
+llama-cpp-python
+faiss-cpu
+sentence-transformers
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+python-dotenv

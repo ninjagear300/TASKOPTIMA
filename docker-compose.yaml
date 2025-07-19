@@ -1,0 +1,41 @@
+
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: taskoptima_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@localhost:5432/taskoptima_db
+      - LLAMA_MODEL_PATH=/models/phi-2.Q4_K_M.gguf
+    volumes:
+      - ./backend:/app
+      - ./models:/models
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    environment:
+      - CI=true
+
+volumes:
+  pg_data:

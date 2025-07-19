@@ -1,0 +1,37 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.whl
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# dotenv
+.env
+
+# Model binaries
+models/*.gguf
+models/*.bin
+models/*.pt
+models/*.safetensors
+
+# Database files
+*.db
+*.sqlite3
+
+# Node / frontend
+frontend/node_modules/
+frontend/build/
+
+# Logs
+*.log
+
+# VSCode settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
